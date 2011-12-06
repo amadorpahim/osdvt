@@ -12,6 +12,6 @@ VmID=$(echo $1 | sed "s/tap//g")
 BRIDGE=$(mysql -s --host=$DBHost --user=$DBUser --password=$DBPassword -e "select osdvtadmin_bridge.Name from osdvtadmin_vm,osdvtadmin_bridge where osdvtadmin_vm.id = $VmID and osdvtadmin_vm.Bridge_id = osdvtadmin_bridge.id" $DBName)
 
 echo "Adding $1 to $BRIDGE..."
-$BRCTL addif br0 tap1
+$BRCTL addif $BRIDGE $1
 echo "Bringing up $1 for bridged mode..."
-$IFCONFIG tap1 0.0.0.0 promisc up
+$IFCONFIG $1 0.0.0.0 promisc up
