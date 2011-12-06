@@ -1,0 +1,87 @@
+#! /bin/bash
+#
+# chkconfig: 2345 20 80
+# description: Activates/Deactivates OSDVT Server
+#
+
+base_dir="/usr/local/osdvt/server/bin"
+osdvt="osdvt-server.py"
+port="6970"
+
+start()
+{
+	! ps -C $osdvt > /dev/null 2> /dev/null && {
+	$base_dir/$osdvt > /dev/null 2> /dev/null &
+        echo -n Starting OSDVT..
+	n=120
+        while ! ps -C $osdvt > /dev/null 2> /dev/null && [ $n -gt 1 ]; do
+                sleep 1
+                echo -n .
+                n=$(($n - 1))
+        done
+	sleep 1
+        ps -C $osdvt > /dev/null 2> /dev/null && echo -n " OK" ||  echo -n " FAILED"
+        echo ""
+	} || {
+	echo "OSDVT was running."
+	}
+
+}
+
+stop()
+{
+	declare -l option
+	ps -C qemu-kvm > /dev/null 2>1 && {
+		read -p "There is at least one VM running. Kill all VMs? (y/n)" option	
+		[ ${option} == "y" ] && {
+			killall qemu-kvm
+			n=120
+			while ps -C qemu-kvm > /dev/null 2>1 && [ $n -gt 1 ]; do
+				sleep 1
+                		echo -n .
+                		n=$(($n - 1))
+			done
+			sleep 1
+			! ps -C qemu-kvm > /dev/null 2>1 || echo -n " FAILED"
+		}
+	}
+	stop_daemon
+
+}
+stop_daemon()
+{
+	ps -C $osdvt > /dev/null 2> /dev/null && {
+	kill $(pidof -x $osdvt) > /dev/null 2> /dev/null
+        n=120
+        echo -n Stopping OSDVT.. 
+        while (ps -C $osdvt > /dev/null 2> /dev/null || netstat -anp | grep ":$port" > /dev/null 2> /dev/null) && [ $n -gt 1 ]; do
+                sleep 1
+                echo -n .
+                n=$(($n - 1))
+        done
+	sleep 1
+        ! ps -C $osdvt > /dev/null 2> /dev/null && echo -n " OK" ||  echo -n " FAILED"
+        echo ""
+	} || {
+	echo "OSDVT was not running."
+	}
+}
+
+case "$1" in
+start)
+        start
+        ;;
+stop)
+        stop
+        ;;
+restart)
+        stop
+        start
+        ;;
+*)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
