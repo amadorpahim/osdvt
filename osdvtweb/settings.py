@@ -24,10 +24,10 @@ DATABASES = {
 #import ldap
 #from django_auth_ldap.config import LDAPSearch
 
-AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
+#AUTHENTICATION_BACKENDS = (
+#    'django_auth_ldap.backend.LDAPBackend',
+#    'django.contrib.auth.backends.ModelBackend',
+#)
 
 # LDAP CONFIGURATION
 #AUTH_LDAP_GLOBAL_OPTIONS = {ldap.OPT_X_TLS_REQUIRE_CERT: ldap.OPT_X_TLS_NEVER}
@@ -119,7 +119,7 @@ INSTALLED_APPS = (
 # logger.addHandler(hdlr)
 # logger.setLevel(logging.DEBUG)
 
-try:
-	from settings_local import *
-except ImportError:
-	pass
+#try:
+#	from settings_local import *
+#except ImportError:
+#	pass
