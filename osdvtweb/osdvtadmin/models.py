@@ -22,7 +22,7 @@ class Ip(models.Model):
 class Disk(models.Model):
         Path = models.CharField(max_length=200)
         Description = models.CharField(max_length=200)
-	Size = models.IntegerField(max_length=4, null=True)
+	Size = models.CharField(max_length=4, null=True)
         def __unicode__(self):
                 return u'%s (%s)' % (self.Path, self.Description)
 
@@ -41,9 +41,9 @@ class OsVariant(models.Model):
 class Vm(models.Model):
         Name = models.CharField(max_length=200)
         Description = models.CharField(max_length=200)
-        Core = models.IntegerField(max_length=2)
-        Socket = models.IntegerField(max_length=2)
-        Memory = models.IntegerField(max_length=4)
+        Core = models.CharField(max_length=2)
+        Socket = models.CharField(max_length=2)
+        Memory = models.CharField(max_length=4)
 	Disk = models.ManyToManyField(Disk, through='VmDisk')
         Immutable = models.BooleanField(default=0)
 	UsbRedirect = models.BooleanField(default=0)

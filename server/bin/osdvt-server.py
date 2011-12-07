@@ -30,7 +30,7 @@ import time
 import signal
 import fcntl
 import syslog
-from subprocess import *
+import subprocess
 from ConfigParser import ConfigParser
 from threading import Thread
 
@@ -40,8 +40,10 @@ config = ConfigParser()
 config.read([filename])
 
 # Config Main
-port = int(config.get('Main','Port') )
-root_dir = config.get('Main','MainDir')
+port 			= int(config.get('Main','Port') )
+video_start_port 	= int(config.get('Main','VideoStartPort') )
+video_end_port 		= int(config.get('Main','VideoEndPort') )
+root_dir 		= config.get('Main','MainDir')
 
 # Config Database
 dbhost = config.get('Database','DBHost')
@@ -282,7 +284,12 @@ class Vms:
 
 			
 	
-	def Start(self, dbhost, dbname, dbuser, dbpass, vmname):
+	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port):
+		def AddQemuArgs(key, value):
+			qemuargs.append("-"+key)
+			if value:	
+				qemuargs.append(value)
+
 		if minhas_vms.Status(dbhost, dbname, dbuser, dbpass, vmname):
 			minhas_vms.SetTokenSpice(dbhost, dbname, dbuser, dbpass, vmname)
 			con = MySQLdb.connect(dbhost, dbuser, dbpass) 
@@ -291,30 +298,41 @@ class Vms:
 			cursor.execute("select * from osdvtadmin_vm where Name = '" + vmname + "'") 
 			rs = cursor.fetchall()
 			if rs:
-				StartId = rs[0][0]
-				StartName = rs[0][1]
-				StartDescription = rs[0][2]
-				StartSmp = rs[0][3]
-				StartMemory = rs[0][4]
-				StartImmutable = rs[0][5]
-				StartMac = rs[0][6]
-				StartSpice = rs[0][8] 
-				
-				array_qemu = {}
+				StartId 		= rs[0][0]
+				StartName 		= rs[0][1]
+				StartDescription 	= rs[0][2]
+				StartCore 		= rs[0][3]
+				StartSocket 		= rs[0][4]
+				StartMemory 		= rs[0][5]
+				StartImmutable 		= rs[0][6]
+				StartUcsRedirect 	= rs[0][7]
+				StartMac 		= rs[0][8]
+				StartBridge 		= rs[0][9] 
+				StartVideo 		= rs[0][10] 
+				StartOsVariant 		= rs[0][11] 
+				StartBits 		= rs[0][12] 
 
-				array_qemu["M"] = "pc"
-				array_qemu["enable-kvm"] = ""
-				array_qemu["device"] = "virtio-balloon-pci,id=balloon0,bus=pci.0"
-				array_qemu["name"] = StartName
-				array_qemu["smp"] = StartSmp+",sockets=1,cores="+StartSmp+",threads=1"
-				array_qemu["m"] = StartMemory
+				Smp			= int(StartCore)*int(StartSocket)
+				qemuargs		= []
 
+				AddQemuArgs("M"		, "pc")
+				AddQemuArgs("device"	, "virtio-balloon-pci,id=balloon0,bus=pci.0")
+				AddQemuArgs("name"	, StartName)
+				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
+				AddQemuArgs("m"		, StartMemory)
+				AddQemuArgs("net"	, "nic,macaddr="+StartMac+",model=rtl8139")
+				AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")
+				AddQemuArgs("soundhw"	, "ac97")
+				AddQemuArgs("monitor"	, "stdio")
+				AddQemuArgs("localtime"	, "")
+				AddQemuArgs("daemonize"	, "")
+				AddQemuArgs("pidfile"	, root_dir + "/socket/" + StartName + ".pid")
 
-
+				if StartImmutable == 1:
+					AddQemuArgs("snapshot", "")
 
 				cursor.execute("select osdvtadmin_vmdisk.Virtio,osdvtadmin_vmdisk.Cdrom,osdvtadmin_vmdisk.boot,osdvtadmin_disk.Path from osdvtadmin_vm, osdvtadmin_disk, osdvtadmin_vmdisk  where osdvtadmin_vm.id= '" + str(StartId) + "' and osdvtadmin_vm.id = osdvtadmin_vmdisk.Vm_id and osdvtadmin_vmdisk.Disk_id = osdvtadmin_disk.id") 
 				rs = cursor.fetchall()
-				drive = ""
 				for i in range(rs.__len__()):
 					options = "file="+rs[i][3]
 					if rs[i][0] == 1: 
@@ -325,33 +343,46 @@ class Vms:
 						if rs[i][1] == 1: 
 							options = options+",media=cdrom"
 							if rs[i][2] == 1:
-								array_qemu["boot"] = "d"
+								AddQemuArgs("boot", "d")
+
+					AddQemuArgs("drive",options)
 				
-					drive = drive+" -drive "+options
+
 				
+				findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
+				video_port = video_start_port
 
-				if StartImmutable == 1:
-					array_qemu["snapshot"] = ""
-			
+				while video_port <= video_end_port:
+					try:
+						findport.bind(('localhost', video_port))
+					except socket.error as e:
+						if e.errno == 98:
+							if video_port == video_end_port:
+								#print "Cabou as porta mano"
+								return "ERR: Can not start VM"
+							else:
+								video_port = video_port+1
+						else:
+							raise
+					else:		
+						break
+				findport.close()
 
-				if StartSpice == 1:
-					cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
-                                        rs = cursor.fetchall()
-					array_qemu["vga"] = "qxl"
-					array_qemu["spice"] = "port="+rs[0][1]+",password="+rs[0][2]
+				if StartVideo == 0:
+					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
+                                        #rs = cursor.fetchall()
+					AddQemuArgs("vga", "qxl")
+					AddQemuArgs("spice", "port="+str(video_port)+",password=123456")
 
-				array_qemu["net"] = "nic,macaddr="+StartMac+",model=rtl8139 -net tap,ifname=tap"+str(StartId)+",script="+root_dir+"/qemu-ifup.sh,downscript="+root_dir+"/qemu-ifdown.sh"
-				array_qemu["soundhw"] = "ac97"
-				array_qemu["monitor"] = "stdio"
-				array_qemu["localtime"] = ""
-				array_qemu["pidfile"] = root_dir + "/socket/" + StartName + ".pid" 
-				array_qemu["daemonize"] = "" 
+				if StartVideo == 1:
+					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
+                                        #rs = cursor.fetchall()
+					AddQemuArgs("vga", "cirrus")
+					AddQemuArgs("vnc", ":5930")
 		
-				args = " ".join([ "-%s %s"%(i,array_qemu[i]) for i in array_qemu.keys() ])	
-				cmnd = KVM+" -device virtio-serial-pci,id=virtio-serial0,bus=pci.0,addr=0x6 -chardev spicevmc,id=charchannel0,name=vdagent -device virtserialport,bus=virtio-serial0.0,nr=1,chardev=charchannel0,id=channel0,name=com.redhat.spice.0 "+drive+" %s >> /var/log/messages 2>> /var/log/messages" %args
-				print cmnd 
-				
-				if os.system(cmnd) == 0:
+				print qemuargs
+
+				if subprocess.call([KVM] + qemuargs) == 0:
 					return "OK: Started"
 				else:
 					return "ERR: Can not start VM"
@@ -479,7 +510,7 @@ if __name__ == "__main__":
 	                                        token = data.split()[3]
 						result = minhas_vms.AuthTokenIp(dbhost, dbname, dbuser, dbpass, ip, token)
 						if result != "ERR":  
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
 							if result:
 				                		connstream.write(result)
 				        		else:
@@ -492,7 +523,7 @@ if __name__ == "__main__":
 						token = data.split()[2]	
 						result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
 						if result != "ERR":  
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
 							if result:
 				                		connstream.write(result)
 				        		else:
