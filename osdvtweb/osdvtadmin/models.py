@@ -54,6 +54,8 @@ class Vm(models.Model):
         Ips = models.ManyToManyField(Ip, blank=True, null=True)
 	OsVariant = models.ForeignKey(OsVariant, blank=True, null=True)
 	Bits = models.BooleanField(choices=BITS_CHOICES,default=0)
+        VideoPort = models.CharField(max_length=5, blank=True, null=True, editable=True)
+        VideoToken = models.CharField(max_length=20, blank=True, null=True, editable=True)
 
 class VmDisk(models.Model):
 	Disk = models.ForeignKey(Disk)

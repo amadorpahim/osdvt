@@ -288,7 +288,7 @@ class Vms:
 			if value:	
 				qemuargs.append(value)
 
-		def FindVideoPort():
+		def GetVideoPort():
 			video_start_port = 5900
 			video_end_port = 5999
 			findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -300,7 +300,7 @@ class Vms:
 				except socket.error as e:
 					if e.errno == 98:
 						if video_port == video_end_port:
-							return "ERR: No free ports."
+							return "ERR",""
 						else:  
 							video_port = video_port+1
 					else:  
@@ -308,8 +308,26 @@ class Vms:
 				else:  
 					break
 
+                	video_token = hex(random.getrandbits(64))[2:-1]
+
+			con = MySQLdb.connect(dbhost, dbuser, dbpass)
+	                con.select_db(dbname)
+	                cursor = con.cursor()
+	                sql_video_port = "update osdvtadmin_vm set VideoPort = '"+str(video_port)+"' where Name = '" + vmname +"'" 
+	                sql_video_token = "update osdvtadmin_vm set VideoToken= '"+str(video_token)+"' where Name = '" + vmname +"'" 
+			try:
+				cursor.execute(sql_video_port)
+				cursor.execute(sql_video_token)
+			except:
+				cursor.close ()
+				con.close ()
+				return "ERR",""
+	
+			con.commit() 
+			cursor.close ()
+
 			findport.close()
-			return video_port
+			return video_port,video_token
 
 		if minhas_vms.Status(dbhost, dbname, dbuser, dbpass, vmname):
 			minhas_vms.SetTokenSpice(dbhost, dbname, dbuser, dbpass, vmname)
@@ -368,23 +386,19 @@ class Vms:
 
 					AddQemuArgs("drive",options)
 				
-				video_port = FindVideoPort()
-				if video_port == "ERR: No free ports.":
-					print "Sem porta livre"
+				video_port,video_token = GetVideoPort()
+
+				if video_port == "ERR":
 					return "ERR: Can not start VM"
 				else:
-					print "Achei porta"
+					print "Port ok %s" % video_port
 
 				
 				if StartVideo == 0:
-					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
-                                        #rs = cursor.fetchall()
 					AddQemuArgs("vga", "qxl")
-					AddQemuArgs("spice", "port=%(video_port)s,password=123456" % {'video_port': video_port})
+					AddQemuArgs("spice", "port=%(video_port)s,password=%(video_token)s" % {'video_port': video_port, 'video_token': video_token})
 
 				if StartVideo == 1:
-					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
-                                        #rs = cursor.fetchall()
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
 		
