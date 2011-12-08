@@ -41,8 +41,6 @@ config.read([filename])
 
 # Config Main
 port 			= int(config.get('Main','Port') )
-video_start_port 	= int(config.get('Main','VideoStartPort') )
-video_end_port 		= int(config.get('Main','VideoEndPort') )
 root_dir 		= config.get('Main','MainDir')
 
 # Config Database
@@ -284,11 +282,34 @@ class Vms:
 
 			
 	
-	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port):
+	def Start(self, dbhost, dbname, dbuser, dbpass, vmname):
 		def AddQemuArgs(key, value):
 			qemuargs.append("-"+key)
 			if value:	
 				qemuargs.append(value)
+
+		def FindVideoPort():
+			video_start_port = 5900
+			video_end_port = 5999
+			findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			video_port = video_start_port
+
+			while video_port <= video_end_port:
+				try:   
+					findport.bind(('localhost', video_port))
+				except socket.error as e:
+					if e.errno == 98:
+						if video_port == video_end_port:
+							return "ERR: No free ports."
+						else:  
+							video_port = video_port+1
+					else:  
+						raise
+				else:  
+					break
+
+			findport.close()
+			return video_port
 
 		if minhas_vms.Status(dbhost, dbname, dbuser, dbpass, vmname):
 			minhas_vms.SetTokenSpice(dbhost, dbname, dbuser, dbpass, vmname)
@@ -347,38 +368,25 @@ class Vms:
 
 					AddQemuArgs("drive",options)
 				
+				video_port = FindVideoPort()
+				if video_port == "ERR: No free ports.":
+					print "Sem porta livre"
+					return "ERR: Can not start VM"
+				else:
+					print "Achei porta"
 
 				
-				findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
-				video_port = video_start_port
-
-				while video_port <= video_end_port:
-					try:
-						findport.bind(('localhost', video_port))
-					except socket.error as e:
-						if e.errno == 98:
-							if video_port == video_end_port:
-								#print "Cabou as porta mano"
-								return "ERR: Can not start VM"
-							else:
-								video_port = video_port+1
-						else:
-							raise
-					else:		
-						break
-				findport.close()
-
 				if StartVideo == 0:
 					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
                                         #rs = cursor.fetchall()
 					AddQemuArgs("vga", "qxl")
-					AddQemuArgs("spice", "port="+str(video_port)+",password=123456")
+					AddQemuArgs("spice", "port=%(video_port)s,password=123456" % {'video_port': video_port})
 
 				if StartVideo == 1:
 					#cursor.execute("select osdvtadmin_spice.* from osdvtadmin_vm, osdvtadmin_spice where osdvtadmin_vm.Name = '" + vmname + "' and osdvtadmin_vm.SpicePort_id = osdvtadmin_spice.id")
                                         #rs = cursor.fetchall()
 					AddQemuArgs("vga", "cirrus")
-					AddQemuArgs("vnc", ":5930")
+					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
 		
 				print qemuargs
 
@@ -510,7 +518,8 @@ if __name__ == "__main__":
 	                                        token = data.split()[3]
 						result = minhas_vms.AuthTokenIp(dbhost, dbname, dbuser, dbpass, ip, token)
 						if result != "ERR":  
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
+							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
 							if result:
 				                		connstream.write(result)
 				        		else:
@@ -523,7 +532,8 @@ if __name__ == "__main__":
 						token = data.split()[2]	
 						result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
 						if result != "ERR":  
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
+							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
 							if result:
 				                		connstream.write(result)
 				        		else:
