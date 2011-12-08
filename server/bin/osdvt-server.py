@@ -31,8 +31,12 @@ import signal
 import fcntl
 import syslog
 import subprocess
+import logging
 from ConfigParser import ConfigParser
 from threading import Thread
+
+#logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(filename='/usr/local/osdvt/server/log/osdvt-server.log', level=logging.DEBUG)
 
 # Config file
 filename = '/usr/local/osdvt/server/config/osdvt.conf'
@@ -41,6 +45,7 @@ config.read([filename])
 
 # Config Main
 port 			= int(config.get('Main','Port') )
+video_end_port		= int(config.get('Main','VideoEndPort'))
 root_dir 		= config.get('Main','MainDir')
 
 # Config Database
@@ -66,11 +71,13 @@ if os.path.exists('/usr/bin/qemu-kvm'):
 elif os.path.exists('/usr/libexec/qemu-kvm'):
 	KVM="/usr/libexec/qemu-kvm"
 else:
-	syslog.syslog(syslog.LOG_ERR, "OSDVT: qemu-kvm not found. Maybe, you've to install it.")
+	#syslog.syslog(syslog.LOG_ERR, "OSDVT: qemu-kvm not found. Maybe, you've to install it.")
+	logging.info("OSDVT: qemu-kvm not found. Maybe, you've to install it.")
 	signal.signal(signal.SIGTERM, minhas_vms.sigterm_handler, Socket)
 	signal.signal(signal.SIGINT, minhas_vms.sigint_handler, Socket)
 
-syslog.syslog("OSDVT: using "+KVM)
+#syslog.syslog("OSDVT: using "+KVM)
+logging.debug("OSDVT: using %s" % KVM)
 
 class Vms:
 	def sigint_handler(self, signal, frame, Socket):
@@ -116,24 +123,6 @@ class Vms:
 		else:
 			return "ERR"
 
-	def SetTokenSpice(self, dbhost, dbname, dbuser, dbpass, vmname):
-		con = MySQLdb.connect(dbhost, dbuser, dbpass)
-                con.select_db(dbname)
-                cursor = con.cursor()
-		token = hex(random.getrandbits(64))[2:-1]
-                sql = "update osdvtadmin_vm,osdvtadmin_spice set osdvtadmin_spice.Token = '"+str(token)+"' where osdvtadmin_spice.id = osdvtadmin_vm.SpicePort_id and osdvtadmin_vm.Name = '" + vmname +"'" 
-		try:
-			cursor.execute(sql)
-		except:
-			cursor.close ()
-			con.close ()
-			return "ERR"
-
-		con.commit() 
-		cursor.close ()
-		con.close ()
-		return str(token)
-
 	def SetTokenAuth(self, dbhost, dbname, dbuser, dbpass, user):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass)
                 con.select_db(dbname)
@@ -178,15 +167,20 @@ class Vms:
 		if LDAPEnabled == "True":
 			try:
 				dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+				logging.debug("Authenticating user. LDAP: %s" % ldaphost)
+				logging.debug("Authenticating user. USER: %s" % user)
+				logging.debug("Authenticating user. baseDN: %s" % baseDN)
 			except:
-				print sys.exc_info()
+				logging.exception("LDAP Error: %s" % ldaphost)
 				return "ERR: Invalid credentials"
 	
 			try:
 				l.simple_bind_s(dn,password)
 			except ldap.INVALID_CREDENTIALS:
+				logging.exception("LDAP Error: %s invalid credentials" % user)
 				return "ERR: Invalid credentials"
 		
+		logging.debug("User %s authenticated." % user)
 		return "OK: Auth successful"
 
 	def Kill(self, dbhost, dbname, dbuser, dbpass, vmname):
@@ -240,7 +234,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select osdvtadmin_spice.SpicePort,osdvtadmin_spice.Token from osdvtadmin_spice,osdvtadmin_vm where osdvtadmin_spice.id = osdvtadmin_vm.SpicePort_id and osdvtadmin_vm.Name = '" + vmname +"'")
+		cursor.execute("select osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '" + vmname +"'")
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
@@ -250,10 +244,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-
 		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm_Users, osdvtadmin_vm, osdvtadmin_user WHERE osdvtadmin_vm.id = osdvtadmin_vm_Users.vm_id and osdvtadmin_user.id = osdvtadmin_vm_Users.user_id and osdvtadmin_user.Name = '" + user + "'")
-
-
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
@@ -282,15 +273,15 @@ class Vms:
 
 			
 	
-	def Start(self, dbhost, dbname, dbuser, dbpass, vmname):
+	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_end_port):
 		def AddQemuArgs(key, value):
 			qemuargs.append("-"+key)
 			if value:	
 				qemuargs.append(value)
 
-		def GetVideoPort():
+		def GetVideoPort(video_end_port):
 			video_start_port = 5900
-			video_end_port = 5999
+			#video_end_port = 5999
 			findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			video_port = video_start_port
 
@@ -319,6 +310,7 @@ class Vms:
 				cursor.execute(sql_video_port)
 				cursor.execute(sql_video_token)
 			except:
+				logging.exception("Error inserting VideoPort/VideoToken in database.")
 				cursor.close ()
 				con.close ()
 				return "ERR",""
@@ -330,7 +322,6 @@ class Vms:
 			return video_port,video_token
 
 		if minhas_vms.Status(dbhost, dbname, dbuser, dbpass, vmname):
-			minhas_vms.SetTokenSpice(dbhost, dbname, dbuser, dbpass, vmname)
 			con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 			con.select_db(dbname)
 			cursor = con.cursor() 
@@ -386,13 +377,14 @@ class Vms:
 
 					AddQemuArgs("drive",options)
 				
-				video_port,video_token = GetVideoPort()
+				video_port,video_token = GetVideoPort(video_end_port)
 
 				if video_port == "ERR":
+					logging.debug("No free ports. Consider adjust VideoEndPort configuration.")
 					return "ERR: Can not start VM"
 				else:
-					print "Port ok %s" % video_port
-
+					logging.debug("Free port found: %s" % video_port)
+					logging.debug("Randon VideoToken OK.: %s" % video_token)
 				
 				if StartVideo == 0:
 					AddQemuArgs("vga", "qxl")
@@ -402,7 +394,10 @@ class Vms:
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
 		
-				print qemuargs
+
+				cmndargs = " ".join(qemuargs)
+
+				logging.debug("QEMU COMMAND: %s %s" % (KVM, cmndargs))
 
 				if subprocess.call([KVM] + qemuargs) == 0:
 					return "OK: Started"
@@ -533,7 +528,7 @@ if __name__ == "__main__":
 						result = minhas_vms.AuthTokenIp(dbhost, dbname, dbuser, dbpass, ip, token)
 						if result != "ERR":  
 							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port)
 							if result:
 				                		connstream.write(result)
 				        		else:
@@ -547,7 +542,7 @@ if __name__ == "__main__":
 						result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
 						if result != "ERR":  
 							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port)
 							if result:
 				                		connstream.write(result)
 				        		else:
@@ -583,6 +578,7 @@ if __name__ == "__main__":
 							else:
 								connstream.write('ERR: Can not token')
 					except:
+						logging.exception("Connection lost trying to get STATUS.")
 						connstream.write('ERR: Lost session')
 			
 				elif data.split()[0] == "CONNECT":

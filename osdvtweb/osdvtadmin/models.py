@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib import admin
 
 VIDEO_CHOICES	= ((0, 'SPICE'), (1, 'VNC'))
-OS_CHOICES	= ((0, 'Linux'), (1, 'Windows'))
+OS_CHOICES	= (('Linux', 'Linux'), ('Windows', 'Windows'))
 BITS_CHOICES	= ((0, '32'), (1, '64'))
 
 class User(models.Model):
@@ -33,7 +33,7 @@ class Bridge(models.Model):
                 return u'%s (%s)' % (self.Name, self.Description)
 
 class OsVariant(models.Model):
-	OsType = models.BooleanField(choices=OS_CHOICES,default=0)
+	OsType = models.CharField(max_length=20,choices=OS_CHOICES)
 	OsVariant = models.CharField(max_length=200)
         def __unicode__(self):
                 return u'%s %s' % (self.OsType, self.OsVariant)
@@ -54,8 +54,8 @@ class Vm(models.Model):
         Ips = models.ManyToManyField(Ip, blank=True, null=True)
 	OsVariant = models.ForeignKey(OsVariant, blank=True, null=True)
 	Bits = models.BooleanField(choices=BITS_CHOICES,default=0)
-        VideoPort = models.CharField(max_length=5, blank=True, null=True, editable=True)
-        VideoToken = models.CharField(max_length=20, blank=True, null=True, editable=True)
+        VideoPort = models.CharField(max_length=5, blank=True, null=True, editable=False)
+        VideoToken = models.CharField(max_length=20, blank=True, null=True, editable=False)
 
 class VmDisk(models.Model):
 	Disk = models.ForeignKey(Disk)
