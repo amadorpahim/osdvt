@@ -35,8 +35,6 @@ import logging
 from ConfigParser import ConfigParser
 from threading import Thread
 
-#logging.basicConfig(level=logging.DEBUG)
-logging.basicConfig(filename='/usr/local/osdvt/server/log/osdvt-server.log', level=logging.DEBUG)
 
 # Config file
 filename = '/usr/local/osdvt/server/config/osdvt.conf'
@@ -64,6 +62,10 @@ LDAPEnabled = config.get('LDAP','Enabled')
 ldaphost = "ldap://"+config.get('LDAP','Host')
 baseDN = config.get('LDAP','BaseDN')
 LdapFilter = config.get('LDAP','Filter')
+
+# LOG configuration
+logging.basicConfig(filename=root_dir+'/log/osdvt-server.log', level=logging.DEBUG)
+
 
 # Finding KVM binary. RHEL6 puts in "libexec" without $PATH.
 if os.path.exists('/usr/bin/qemu-kvm'):
@@ -335,7 +337,7 @@ class Vms:
 				StartSocket 		= rs[0][4]
 				StartMemory 		= rs[0][5]
 				StartImmutable 		= rs[0][6]
-				StartUcsRedirect 	= rs[0][7]
+				StartUsbRedirect 	= rs[0][7]
 				StartMac 		= rs[0][8]
 				StartBridge 		= rs[0][9] 
 				StartVideo 		= rs[0][10] 
@@ -389,11 +391,22 @@ class Vms:
 				if StartVideo == 0:
 					AddQemuArgs("vga", "qxl")
 					AddQemuArgs("spice", "port=%(video_port)s,password=%(video_token)s" % {'video_port': video_port, 'video_token': video_token})
+					AddQemuArgs("device", "virtio-serial")
+					AddQemuArgs("chardev", "spicevmc,id=vdagent,name=vdagent")
+					AddQemuArgs("device", "virtserialport,chardev=vdagent,name=com.redhat.spice.0")
 
 				if StartVideo == 1:
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
-		
+
+				if StartUsbRedirect == 1:
+					AddQemuArgs("readconfig", "%(root_dir)s/config/ich9-ehci-uhci.cfg" % {'root_dir': root_dir})
+					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev1")
+					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3")
+					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev2")
+					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3")
+					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev3")
+					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3")
 
 				cmndargs = " ".join(qemuargs)
 
