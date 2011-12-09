@@ -1,0 +1,960 @@
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: fbdb971663560152
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 561, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 2c8a1519e705aec2
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 568, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 847c2275f56dcc40
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5900,password=847c2275f56dcc40']
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 1eb9f9962b4a3564
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5900,password=1eb9f9962b4a3564']
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+ERROR:root:LDAP Error: apsegundo invalid credentials
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 178, in Auth
+    l.simple_bind_s(dn,password)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 207, in simple_bind_s
+    return self.result(msgid,all=1,timeout=self.timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 422, in result
+    res_type,res_data,res_msgid = self.result2(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 426, in result2
+    res_type, res_data, res_msgid, srv_ctrls = self.result3(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 432, in result3
+    ldap_result = self._ldap_call(self._l.result3,msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 96, in _ldap_call
+    result = func(*args,**kwargs)
+INVALID_CREDENTIALS: {'desc': 'Invalid credentials'}
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+ERROR:root:LDAP Error: apsegundo invalid credentials
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 178, in Auth
+    l.simple_bind_s(dn,password)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 207, in simple_bind_s
+    return self.result(msgid,all=1,timeout=self.timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 422, in result
+    res_type,res_data,res_msgid = self.result2(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 426, in result2
+    res_type, res_data, res_msgid, srv_ctrls = self.result3(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 432, in result3
+    ldap_result = self._ldap_call(self._l.result3,msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 96, in _ldap_call
+    result = func(*args,**kwargs)
+INVALID_CREDENTIALS: {'desc': 'Invalid credentials'}
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: ec281757eaa6ee9b
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5900,password=ec281757eaa6ee9b']
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 11303027120b9a49
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5900,password=11303027120b9a49']
+DEBUG:root:Free port found: 5901
+DEBUG:root:Randon VideoToken OK.: 832153520486af41
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5901,password=832153520486af41']
+DEBUG:root:Free port found: 5901
+DEBUG:root:Randon VideoToken OK.: d7d7b4861838194c
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5901,password=d7d7b4861838194c']
+DEBUG:root:Free port found: 5901
+DEBUG:root:Randon VideoToken OK.: 3573224be6643848
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5901,password=3573224be6643848']
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+ERROR:root:LDAP Error: ldap://ldap.ucs.br
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 169, in Auth
+    dn = l.search_s(baseDN, searchScope, searchFilter, retrieveAttributes)[0][0]
+IndexError: list index out of range
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+ERROR:root:LDAP Error: apsegundo invalid credentials
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 178, in Auth
+    l.simple_bind_s(dn,password)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 207, in simple_bind_s
+    return self.result(msgid,all=1,timeout=self.timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 422, in result
+    res_type,res_data,res_msgid = self.result2(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 426, in result2
+    res_type, res_data, res_msgid, srv_ctrls = self.result3(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 432, in result3
+    ldap_result = self._ldap_call(self._l.result3,msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 96, in _ldap_call
+    result = func(*args,**kwargs)
+INVALID_CREDENTIALS: {'desc': 'Invalid credentials'}
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+ERROR:root:LDAP Error: apsegundo invalid credentials
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 178, in Auth
+    l.simple_bind_s(dn,password)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 207, in simple_bind_s
+    return self.result(msgid,all=1,timeout=self.timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 422, in result
+    res_type,res_data,res_msgid = self.result2(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 426, in result2
+    res_type, res_data, res_msgid, srv_ctrls = self.result3(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 432, in result3
+    ldap_result = self._ldap_call(self._l.result3,msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 96, in _ldap_call
+    result = func(*args,**kwargs)
+INVALID_CREDENTIALS: {'desc': 'Invalid credentials'}
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+ERROR:root:LDAP Error: apsegundo invalid credentials
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 178, in Auth
+    l.simple_bind_s(dn,password)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 207, in simple_bind_s
+    return self.result(msgid,all=1,timeout=self.timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 422, in result
+    res_type,res_data,res_msgid = self.result2(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 426, in result2
+    res_type, res_data, res_msgid, srv_ctrls = self.result3(msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 432, in result3
+    ldap_result = self._ldap_call(self._l.result3,msgid,all,timeout)
+  File "/usr/lib64/python2.7/site-packages/ldap/ldapobject.py", line 96, in _ldap_call
+    result = func(*args,**kwargs)
+INVALID_CREDENTIALS: {'desc': 'Invalid credentials'}
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 7db6aa41a09d0f58
+DEBUG:root:qemuargs: ['-M', 'pc', '-device', 'virtio-balloon-pci,id=balloon0,bus=pci.0', '-name', 'teste1', '-smp', '2,sockets=2,cores=1,threads=1', '-m', '100', '-net', 'nic,macaddr=12:34:56:00:00:21,model=rtl8139', '-net', 'tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh', '-soundhw', 'ac97', '-monitor', 'stdio', '-localtime', '-daemonize', '-pidfile', '/usr/local/osdvt/server/socket/teste1.pid', '-drive', 'file=/var/vms/win_xp_01.img', '-vga', 'qxl', '-spice', 'port=5900,password=7db6aa41a09d0f58']
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 89029658d89ddfe
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: e90fc91f53486f7
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: cefcf7f73182396a
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: baf254d8f3e16345
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 9ceba67c050ed5d
+DEBUG:root:COMMAND: -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=9ceba67c050ed5d  
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: c7d57522f7890fd2
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=c7d57522f7890fd2
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 8bf739e0033c1012
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=8bf739e0033c1012
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: a7c1a3f3b34cda
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=a7c1a3f3b34cda
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: c127b5dabf1d83cd
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=c127b5dabf1d83cd
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server.py", line 571, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 735c30dfcba18621
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=735c30dfcba18621
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 4a81f46aedf69ffe
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 581, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 581, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 581, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 581, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 581, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 6b63ce12a6d89099
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 100 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=6b63ce12a6d89099
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: c2118f3b5aeb0d0a
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -snapshot -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=c2118f3b5aeb0d0a -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: fb0fbb8b8266442
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=fb0fbb8b8266442 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:Authenticating user. LDAP: ldap://ldap.ucs.br
+DEBUG:root:Authenticating user. USER: apsegundo
+DEBUG:root:Authenticating user. baseDN: ou=people,dc=ucs,dc=br
+DEBUG:root:User apsegundo authenticated.
+DEBUG:root:OSDVT: using /usr/bin/qemu-kvm
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 584, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: bc4ca883ba8ea612
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=12:34:56:00:00:21,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=bc4ca883ba8ea612 -device virtio-serial -chardev spicevmc,id=vdagent,name=vdagent -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
