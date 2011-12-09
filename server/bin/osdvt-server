@@ -42,8 +42,10 @@ config = ConfigParser()
 config.read([filename])
 
 # Config Main
+version 		= config.get('Main','Version')
 port 			= int(config.get('Main','Port') )
 video_end_port		= int(config.get('Main','VideoEndPort'))
+mac_oui			= config.get('Main','MAC_OUI')
 root_dir 		= config.get('Main','MainDir')
 
 # Config Database
@@ -73,13 +75,12 @@ if os.path.exists('/usr/bin/qemu-kvm'):
 elif os.path.exists('/usr/libexec/qemu-kvm'):
 	KVM="/usr/libexec/qemu-kvm"
 else:
-	#syslog.syslog(syslog.LOG_ERR, "OSDVT: qemu-kvm not found. Maybe, you've to install it.")
 	logging.info("OSDVT: qemu-kvm not found. Maybe, you've to install it.")
 	signal.signal(signal.SIGTERM, minhas_vms.sigterm_handler, Socket)
 	signal.signal(signal.SIGINT, minhas_vms.sigint_handler, Socket)
 
 #syslog.syslog("OSDVT: using "+KVM)
-logging.debug("OSDVT: using %s" % KVM)
+logging.debug("OSDVT %s is running. Using %s." % (version, KVM))
 
 class Vms:
 	def sigint_handler(self, signal, frame, Socket):
@@ -275,11 +276,16 @@ class Vms:
 
 			
 	
-	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_end_port):
+	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_end_port, mac_oui):
 		def AddQemuArgs(key, value):
 			qemuargs.append("-"+key)
 			if value:	
 				qemuargs.append(value)
+
+		def GetMac(mac_oiu):
+			mac_nic = [ random.randint(0x00, 0x7f), random.randint(0x00, 0xff), random.randint(0x00, 0xff) ]
+			mac_address = mac_oui+':'+':'.join(map(lambda x: "%02x" % x, mac_nic))
+			return mac_address
 
 		def GetVideoPort(video_end_port):
 			video_start_port = 5900
@@ -347,12 +353,15 @@ class Vms:
 				Smp			= int(StartCore)*int(StartSocket)
 				qemuargs		= []
 
+				AddQemuArgs("D"		, root_dir+"/log/osdvt-server.log")
 				AddQemuArgs("M"		, "pc")
 				AddQemuArgs("device"	, "virtio-balloon-pci,id=balloon0,bus=pci.0")
 				AddQemuArgs("name"	, StartName)
 				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
 				AddQemuArgs("m"		, StartMemory)
-				AddQemuArgs("net"	, "nic,macaddr="+StartMac+",model=rtl8139")
+				mac = GetMac(mac_oui)
+				#AddQemuArgs("net"	, "nic,macaddr="+StartMac+",model=rtl8139")
+				AddQemuArgs("net"	, "nic,macaddr="+mac+",model=rtl8139")
 				AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")
 				AddQemuArgs("soundhw"	, "ac97")
 				AddQemuArgs("monitor"	, "stdio")
@@ -408,8 +417,8 @@ class Vms:
 					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev3")
 					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3")
 
-				cmndargs = " ".join(qemuargs)
 
+				cmndargs = " ".join(qemuargs)
 				logging.debug("QEMU COMMAND: %s %s" % (KVM, cmndargs))
 
 				if subprocess.call([KVM] + qemuargs) == 0:
@@ -540,8 +549,7 @@ if __name__ == "__main__":
 	                                        token = data.split()[3]
 						result = minhas_vms.AuthTokenIp(dbhost, dbname, dbuser, dbpass, ip, token)
 						if result != "ERR":  
-							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port, mac_oui)
 							if result:
 				                		connstream.write(result)
 				        		else:
@@ -554,8 +562,7 @@ if __name__ == "__main__":
 						token = data.split()[2]	
 						result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
 						if result != "ERR":  
-							#result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_start_port, video_end_port)
-							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port)
+							result = minhas_vms.Start(dbhost, dbname, dbuser, dbpass, vmname, video_end_port, mac_oui)
 							if result:
 				                		connstream.write(result)
 				        		else:
