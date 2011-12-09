@@ -5,7 +5,7 @@
 #
 
 base_dir="/usr/local/osdvt/server/bin"
-osdvt="osdvt-server.py"
+osdvt="osdvt-server"
 port="6970"
 
 start()
