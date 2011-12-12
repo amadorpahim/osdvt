@@ -282,9 +282,33 @@ class Vms:
 			if value:	
 				qemuargs.append(value)
 
-		def GetMac(mac_oiu):
-			mac_nic = [ random.randint(0x00, 0x7f), random.randint(0x00, 0xff), random.randint(0x00, 0xff) ]
-			mac_address = mac_oui+':'+':'.join(map(lambda x: "%02x" % x, mac_nic))
+		def GetMac(vmname, mac_oiu):
+
+			con = MySQLdb.connect(dbhost, dbuser, dbpass)
+	                con.select_db(dbname)
+	                cursor = con.cursor()
+
+			cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm WHERE osdvtadmin_vm.Name = '" + vmname + "'")
+	                rs = cursor.fetchall()
+			print rs
+
+                	if rs[0][0] == "":
+				mac_nic = [ random.randint(0x00, 0x7f), random.randint(0x00, 0xff), random.randint(0x00, 0xff) ]
+				mac_address = mac_oui+':'+':'.join(map(lambda x: "%02x" % x, mac_nic))
+		                sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
+				try:
+					cursor.execute(sql)
+				except:
+					logging.exception("Error inserting MAC address in database.")
+					cursor.close ()
+					con.close ()
+					return "ERR"
+			else:
+				mac_address = rs[0][0]
+	
+			con.commit() 
+			cursor.close ()
+
 			return mac_address
 
 		def GetVideoPort(video_end_port):
@@ -359,7 +383,7 @@ class Vms:
 				AddQemuArgs("name"	, StartName)
 				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
 				AddQemuArgs("m"		, StartMemory)
-				mac = GetMac(mac_oui)
+				mac = GetMac(vmname, mac_oui)
 				#AddQemuArgs("net"	, "nic,macaddr="+StartMac+",model=rtl8139")
 				AddQemuArgs("net"	, "nic,macaddr="+mac+",model=rtl8139")
 				AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")

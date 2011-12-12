@@ -47,7 +47,7 @@ class Vm(models.Model):
 	Disk = models.ManyToManyField(Disk, through='VmDisk')
         Immutable = models.BooleanField(default=0)
 	UsbRedirect = models.BooleanField(default=0)
-        MAC = models.CharField(max_length=17, unique=True)
+        MAC = models.CharField(max_length=17, unique=True, blank=True, null=True)
         Bridge = models.ForeignKey(Bridge, default=1, null=False)
 	Video = models.BooleanField(choices=VIDEO_CHOICES,default=0)
         Users = models.ManyToManyField(User, blank=True, null=True)
