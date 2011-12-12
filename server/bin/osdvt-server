@@ -290,13 +290,23 @@ class Vms:
 
 			cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm WHERE osdvtadmin_vm.Name = '" + vmname + "'")
 	                rs = cursor.fetchall()
-			print rs
 
-                	if rs[0][0] == "":
+			if rs[0][0] == "":
+				logging.debug("MAC not found. Generating a new one...")
 				mac_nic = [ random.randint(0x00, 0x7f), random.randint(0x00, 0xff), random.randint(0x00, 0xff) ]
 				mac_address = mac_oui+':'+':'.join(map(lambda x: "%02x" % x, mac_nic))
-		                sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
+				
+				cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm")
+	                	rs_macs = cursor.fetchall()
+				
+				for i in range(rs_macs.__len__()):
+		                        if rs_macs[i][0] == mac_address:
+						logging.debug("MAC colision! Generating a new one...")
+						GetMac(vmname, mac_oiu)
+				
+				sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
 				try:
+					logging.debug("New MAC: %s: " % (mac_address))
 					cursor.execute(sql)
 				except:
 					logging.exception("Error inserting MAC address in database.")
@@ -305,6 +315,7 @@ class Vms:
 					return "ERR"
 			else:
 				mac_address = rs[0][0]
+				logging.debug("MAC found: %s" % (mac_address))
 	
 			con.commit() 
 			cursor.close ()
