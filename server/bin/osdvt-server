@@ -288,7 +288,7 @@ class Vms:
 	                con.select_db(dbname)
 	                cursor = con.cursor()
 
-			cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm WHERE osdvtadmin_vm.Name = '" + vmname + "'")
+			cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm WHERE osdvtadmin_vm.Name = '%s'" % (vmname))
 	                rs = cursor.fetchall()
 
 			if rs[0][0] == "":
@@ -304,7 +304,8 @@ class Vms:
 						logging.debug("MAC colision! Generating a new one...")
 						GetMac(vmname, mac_oiu)
 
-				sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
+				#sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
+				sql = "update osdvtadmin_vm set MAC = '%s' where Name = '%s'" % (mac_address,vmname)
 				try:
 					logging.debug("New MAC: %s: " % (mac_address))
 					cursor.execute(sql)
@@ -324,7 +325,6 @@ class Vms:
 
 		def GetVideoPort(video_end_port):
 			video_start_port = 5900
-			#video_end_port = 5999
 			findport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			video_port = video_start_port
 
@@ -430,7 +430,7 @@ class Vms:
 					return "ERR: Can not start VM"
 				else:
 					logging.debug("Free port found: %s" % video_port)
-					logging.debug("Randon VideoToken OK.: %s" % video_token)
+					logging.debug("Random VideoToken: %s" % video_token)
 				
 				if StartVideo == 0:
 					AddQemuArgs("vga", "qxl")

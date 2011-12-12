@@ -2944,3 +2944,161 @@ Traceback (most recent call last):
   File "./osdvt-server", line 626, in <module>
     result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
 NameError: name 'user' is not defined
+DEBUG:root:OSDVT 0.3 is running. Using /usr/bin/qemu-kvm.
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 627, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:MAC found: 
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 351f7994184c99dd
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -D /usr/local/osdvt/server/log/osdvt-server.log -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=351f7994184c99dd -device virtio-serial -chardev spicevmc,id=vdagent,name=vdagent -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:OSDVT 0.3 is running. Using /usr/bin/qemu-kvm.
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:MAC not found. Generating a new one...
+DEBUG:root:New MAC: 0C:81:12:35:e7:a2: 
+DEBUG:root:Free port found: 5900
+DEBUG:root:Randon VideoToken OK.: 7b7846d2e247de6e
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -D /usr/local/osdvt/server/log/osdvt-server.log -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=0C:81:12:35:e7:a2,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=7b7846d2e247de6e -device virtio-serial -chardev spicevmc,id=vdagent,name=vdagent -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:OSDVT 0.3 is running. Using /usr/bin/qemu-kvm.
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:MAC found: 0C:81:12:35:e7:a2
+DEBUG:root:Free port found: 5900
+DEBUG:root:Random VideoToken: cb382d28ac9ee00c
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -D /usr/local/osdvt/server/log/osdvt-server.log -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=0C:81:12:35:e7:a2,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=cb382d28ac9ee00c -device virtio-serial -chardev spicevmc,id=vdagent,name=vdagent -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:OSDVT 0.3 is running. Using /usr/bin/qemu-kvm.
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+ERROR:root:Connection lost trying to get STATUS.
+Traceback (most recent call last):
+  File "./osdvt-server", line 626, in <module>
+    result = minhas_vms.AuthToken(dbhost, dbname, dbuser, dbpass, user, token)
+NameError: name 'user' is not defined
+DEBUG:root:MAC found: 0C:81:12:35:e7:a2
+DEBUG:root:Free port found: 5900
+DEBUG:root:Random VideoToken: d6e57b4006c8b746
+DEBUG:root:QEMU COMMAND: /usr/bin/qemu-kvm -D /usr/local/osdvt/server/log/osdvt-server.log -M pc -device virtio-balloon-pci,id=balloon0,bus=pci.0 -name teste1 -smp 2,sockets=2,cores=1,threads=1 -m 500 -net nic,macaddr=0C:81:12:35:e7:a2,model=rtl8139 -net tap,ifname=tap1,script=/usr/local/osdvt/server/scripts/qemu-ifup.sh,downscript=/usr/local/osdvt/server/scripts/qemu-ifdown.sh -soundhw ac97 -monitor stdio -localtime -daemonize -pidfile /usr/local/osdvt/server/socket/teste1.pid -drive file=/var/vms/win_xp_01.img -vga qxl -spice port=5900,password=d6e57b4006c8b746 -device virtio-serial -chardev spicevmc,id=vdagent,name=vdagent -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 -readconfig /usr/local/osdvt/server/config/ich9-ehci-uhci.cfg -chardev spicevmc,name=usbredir,id=usbredirchardev1 -device usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev2 -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 -chardev spicevmc,name=usbredir,id=usbredirchardev3 -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3
+DEBUG:root:MAC not found. Generating a new one...
+DEBUG:root:OSDVT 0.3 is running. Using /usr/bin/qemu-kvm.
