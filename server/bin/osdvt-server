@@ -304,10 +304,9 @@ class Vms:
 						logging.debug("MAC colision! Generating a new one...")
 						GetMac(vmname, mac_oiu)
 
-				#sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
 				sql = "update osdvtadmin_vm set MAC = '%s' where Name = '%s'" % (mac_address,vmname)
 				try:
-					logging.debug("New MAC: %s: " % (mac_address))
+					logging.debug("New MAC: %s" % (mac_address))
 					cursor.execute(sql)
 				except:
 					logging.exception("Error inserting MAC address in database.")
@@ -370,6 +369,7 @@ class Vms:
 			cursor = con.cursor() 
 			cursor.execute("select * from osdvtadmin_vm where Name = '" + vmname + "'") 
 			rs = cursor.fetchall()
+
 			if rs:
 				StartId 		= rs[0][0]
 				StartName 		= rs[0][1]
@@ -385,30 +385,50 @@ class Vms:
 				StartOsVariant 		= rs[0][11] 
 				StartBits 		= rs[0][12] 
 
-				Smp			= int(StartCore)*int(StartSocket)
 				qemuargs		= []
 
-				AddQemuArgs("D"		, root_dir+"/log/osdvt-server.log")
 				AddQemuArgs("M"		, "pc")
 				AddQemuArgs("device"	, "virtio-balloon-pci,id=balloon0,bus=pci.0")
 				AddQemuArgs("name"	, StartName)
-				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
 				AddQemuArgs("m"		, StartMemory)
-				mac = GetMac(vmname, mac_oui)
-				#AddQemuArgs("net"	, "nic,macaddr="+StartMac+",model=rtl8139")
-				AddQemuArgs("net"	, "nic,macaddr="+mac+",model=rtl8139")
-				AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")
 				AddQemuArgs("soundhw"	, "ac97")
-				AddQemuArgs("monitor"	, "stdio")
+				AddQemuArgs("monitor"	, "null")
 				AddQemuArgs("localtime"	, "")
 				AddQemuArgs("daemonize"	, "")
 				AddQemuArgs("pidfile"	, root_dir + "/socket/" + StartName + ".pid")
 
+				# Seeting system architecture.
+				if StartBits == 1:
+					AddQemuArgs("cpu"	, "qemu64")
+				else:
+					AddQemuArgs("cpu"       , "qemu32")
+
+				# Calculating number of processors.
+				Smp			= int(StartCore)*int(StartSocket)
+				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
+
+				# Getting MAC address.
+				mac = GetMac(vmname, mac_oui)
+
+				# Setting virtio/vhost net device to Linux hosts.
+				if StartOsVariant == 1:
+					AddQemuArgs("netdev"	, "tap,ifname=tap%s,id=guest0,vhost=on,script=%s/scripts/qemu-ifup.sh,downscript=%s/scripts/qemu-ifdown.sh" % (StartId,root_dir,root_dir))
+					AddQemuArgs("net"	, "nic,model=virtio,netdev=guest0,macaddr=%s" % (mac))
+				
+				# Setting rtl8139 net device to windows hosts.
+				else:
+					AddQemuArgs("net"	, "nic,macaddr="+mac+",model=rtl8139")
+					AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")
+
+				# Setting immutable mode.
 				if StartImmutable == 1:
 					AddQemuArgs("snapshot", "")
 
-				cursor.execute("select osdvtadmin_vmdisk.Virtio,osdvtadmin_vmdisk.Cdrom,osdvtadmin_vmdisk.boot,osdvtadmin_disk.Path from osdvtadmin_vm, osdvtadmin_disk, osdvtadmin_vmdisk  where osdvtadmin_vm.id= '" + str(StartId) + "' and osdvtadmin_vm.id = osdvtadmin_vmdisk.Vm_id and osdvtadmin_vmdisk.Disk_id = osdvtadmin_disk.id") 
+				# Getting vm disks.
+				cursor.execute("select osdvtadmin_vmdisk.Virtio,osdvtadmin_vmdisk.Cdrom,osdvtadmin_vmdisk.boot,osdvtadmin_disk.Path from osdvtadmin_vm, osdvtadmin_disk, osdvtadmin_vmdisk  where osdvtadmin_vm.id= '%s' and osdvtadmin_vm.id = osdvtadmin_vmdisk.Vm_id and osdvtadmin_vmdisk.Disk_id = osdvtadmin_disk.id" % (StartId)) 
 				rs = cursor.fetchall()
+
+				# Defining disk properties.
 				for i in range(rs.__len__()):
 					options = "file="+rs[i][3]
 					if rs[i][0] == 1: 
@@ -423,8 +443,8 @@ class Vms:
 
 					AddQemuArgs("drive",options)
 				
+				# Getting video port and token.
 				video_port,video_token = GetVideoPort(video_end_port)
-
 				if video_port == "ERR":
 					logging.debug("No free ports. Consider adjust VideoEndPort configuration.")
 					return "ERR: Can not start VM"
@@ -432,6 +452,7 @@ class Vms:
 					logging.debug("Free port found: %s" % video_port)
 					logging.debug("Random VideoToken: %s" % video_token)
 				
+				# Setting video mode (SPICE/VNC)
 				if StartVideo == 0:
 					AddQemuArgs("vga", "qxl")
 					AddQemuArgs("spice", "port=%(video_port)s,password=%(video_token)s" % {'video_port': video_port, 'video_token': video_token})
@@ -443,6 +464,7 @@ class Vms:
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
 
+				# Setting usb_redir parameters.
 				if StartUsbRedirect == 1:
 					AddQemuArgs("readconfig", "%(root_dir)s/config/ich9-ehci-uhci.cfg" % {'root_dir': root_dir})
 					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev1")
@@ -452,10 +474,11 @@ class Vms:
 					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev3")
 					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3")
 
-
+				# Putting all together justo for log.
 				cmndargs = " ".join(qemuargs)
 				logging.debug("QEMU COMMAND: %s %s" % (KVM, cmndargs))
 
+				# Running qemu command.
 				if subprocess.call([KVM] + qemuargs) == 0:
 					return "OK: Started"
 				else:
