@@ -367,7 +367,7 @@ class Vms:
 			con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 			con.select_db(dbname)
 			cursor = con.cursor() 
-			cursor.execute("select * from osdvtadmin_vm where Name = '" + vmname + "'") 
+			cursor.execute("select * from osdvtadmin_vm where Name = '%s'" % (vmname)) 
 			rs = cursor.fetchall()
 
 			if rs:
@@ -395,7 +395,7 @@ class Vms:
 				AddQemuArgs("monitor"	, "null")
 				AddQemuArgs("localtime"	, "")
 				AddQemuArgs("daemonize"	, "")
-				AddQemuArgs("pidfile"	, root_dir + "/socket/" + StartName + ".pid")
+				AddQemuArgs("pidfile"	, "%s/socket/%s.pid" % (root_dir,StartName))
 
 				# Seeting system architecture.
 				if StartBits == 1:
@@ -404,8 +404,8 @@ class Vms:
 					AddQemuArgs("cpu"       , "qemu32")
 
 				# Calculating number of processors.
-				Smp			= int(StartCore)*int(StartSocket)
-				AddQemuArgs("smp"	, str(Smp)+",sockets="+str(StartSocket)+",cores="+str(StartCore)+",threads=1")
+				Smp = int(StartCore)*int(StartSocket)
+				AddQemuArgs("smp"	, "%s,sockets=%s,cores=%s,threads=1" % (Smp,StartSocket,StartCore))
 
 				# Getting MAC address.
 				mac = GetMac(vmname, mac_oui)
@@ -417,8 +417,8 @@ class Vms:
 				
 				# Setting rtl8139 net device to windows hosts.
 				else:
-					AddQemuArgs("net"	, "nic,macaddr="+mac+",model=rtl8139")
-					AddQemuArgs("net"	, "tap,ifname=tap"+str(StartId)+",script="+root_dir+"/scripts/qemu-ifup.sh,downscript="+root_dir+"/scripts/qemu-ifdown.sh")
+					AddQemuArgs("net"	, "nic,macaddr=%s,model=rtl8139" % (mac))
+					AddQemuArgs("net"	, "tap,ifname=tap%s,script=%s/scripts/qemu-ifup.sh,downscript=%s/scripts/qemu-ifdown.sh" %(StartId,root_dir,root_dir))
 
 				# Setting immutable mode.
 				if StartImmutable == 1:
@@ -446,7 +446,7 @@ class Vms:
 				# Getting video port and token.
 				video_port,video_token = GetVideoPort(video_end_port)
 				if video_port == "ERR":
-					logging.debug("No free ports. Consider adjust VideoEndPort configuration.")
+					logging.debug("No free ports. Consider adjusting VideoEndPort configuration.")
 					return "ERR: Can not start VM"
 				else:
 					logging.debug("Free port found: %s" % video_port)
