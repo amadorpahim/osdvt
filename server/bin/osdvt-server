@@ -297,13 +297,13 @@ class Vms:
 				mac_address = mac_oui+':'+':'.join(map(lambda x: "%02x" % x, mac_nic))
 				
 				cursor.execute("SELECT osdvtadmin_vm.MAC FROM osdvtadmin_vm")
-	                	rs_macs = cursor.fetchall()
-				
+				rs_macs = cursor.fetchall()
+
 				for i in range(rs_macs.__len__()):
-		                        if rs_macs[i][0] == mac_address:
+					if rs_macs[i][0] == mac_address:
 						logging.debug("MAC colision! Generating a new one...")
 						GetMac(vmname, mac_oiu)
-				
+
 				sql = "update osdvtadmin_vm set MAC = '"+mac_address+"' where Name = '" + vmname +"'" 
 				try:
 					logging.debug("New MAC: %s: " % (mac_address))
