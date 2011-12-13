@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'osdvtweb.urls'
 
 TEMPLATE_DIRS = (
 )
