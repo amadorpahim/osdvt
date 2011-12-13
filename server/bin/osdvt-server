@@ -121,7 +121,7 @@ class Vms:
 		cursor.close ()
 		con.close ()
 
-		logging.debug("AuthToken: User/token OK.")
+		#logging.debug("AuthToken: User/token OK.")
 		return "OK"
 
 
@@ -142,7 +142,7 @@ class Vms:
 		cursor.close ()
 		con.close ()
 
-		logging.debug("AuthTokenIp: IP/token OK.")
+		#logging.debug("AuthTokenIp: IP/token OK.")
 		return "OK"
 
 	def SetTokenAuth(self, dbhost, dbname, dbuser, dbpass, user):
@@ -235,12 +235,13 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '" + vmname + "'")
+		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
 		if rs:
-			pidfile = root_dir + "/socket/" + rs[0][0] + ".pid"
+			pidfile = "%s/socket/%s.pid" % (root_dir,rs[0][0])
+
 			if os.path.isfile(pidfile):
 				return "True" 
 			else:
@@ -250,12 +251,13 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '" + vmname + "'")
+		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
 		if rs:
-			pidfile = root_dir + "/socket/" + rs[0][0] + ".pid"
+			pidfile = "%s/socket/%s.pid" % (root_dir,rs[0][0])
+
 			if os.path.isfile(pidfile):
 				return "True" 
 			else:
@@ -265,44 +267,43 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select osdvtadmin_vm.Video,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '" + vmname +"'")
+		cursor.execute("select osdvtadmin_vm.Video,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
+
+		logging.debug("Connect: Video %s, VideoPort %s, VideoToken %s." % (rs[0][0],rs[0][1],rs[0][2]))
 		return rs
 
 	def Search(self, dbhost, dbname, dbuser, dbpass, user):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm_Users, osdvtadmin_vm, osdvtadmin_user WHERE osdvtadmin_vm.id = osdvtadmin_vm_Users.vm_id and osdvtadmin_user.id = osdvtadmin_vm_Users.user_id and osdvtadmin_user.Name = '" + user + "'")
+		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm_Users, osdvtadmin_vm, osdvtadmin_user WHERE osdvtadmin_vm.id = osdvtadmin_vm_Users.vm_id and osdvtadmin_user.id = osdvtadmin_vm_Users.user_id and osdvtadmin_user.Name = '%s'" % (user))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
 		listavms = "" 
 		for i in range(rs.__len__()):
-			listavms = rs[i][0] + " " + listavms
+			listavms = "%s %s" % (rs[i][0],listavms)
 
+		logging.debug("Search: %s" % (listavms))
 		return listavms
 
 	def SearchIp(self, dbhost, dbname, dbuser, dbpass, ip):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-
-		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm_Ips, osdvtadmin_vm, osdvtadmin_ip WHERE osdvtadmin_vm.id = osdvtadmin_vm_Ips.vm_id and osdvtadmin_ip.id = osdvtadmin_vm_Ips.ip_id and osdvtadmin_ip.IP = '" + ip + "'")
-
-
+		cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm_Ips, osdvtadmin_vm, osdvtadmin_ip WHERE osdvtadmin_vm.id = osdvtadmin_vm_Ips.vm_id and osdvtadmin_ip.id = osdvtadmin_vm_Ips.ip_id and osdvtadmin_ip.IP = '%s'" % (ip))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
 		listavms = "" 
 		for i in range(rs.__len__()):
-			listavms = rs[i][0] + " " + listavms
+			listavms = "%s %s" % (rs[i][0],listavms)
 
+		logging.debug("Search: %s" % (listavms))
 		return listavms
-
-			
 	
 	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_end_port, mac_oui):
 		def AddQemuArgs(key, value):
@@ -374,8 +375,8 @@ class Vms:
 			con = MySQLdb.connect(dbhost, dbuser, dbpass)
 	                con.select_db(dbname)
 	                cursor = con.cursor()
-	                sql_video_port = "update osdvtadmin_vm set VideoPort = '"+str(video_port)+"' where Name = '" + vmname +"'" 
-	                sql_video_token = "update osdvtadmin_vm set VideoToken= '"+str(video_token)+"' where Name = '" + vmname +"'" 
+	                sql_video_port = "update osdvtadmin_vm set VideoPort = '%s' where Name = '%s'" % (video_port,vmname) 
+	                sql_video_token = "update osdvtadmin_vm set VideoToken= '%s' where Name = '%s'" % (video_token,vmname) 
 			try:
 				cursor.execute(sql_video_port)
 				cursor.execute(sql_video_token)
@@ -719,6 +720,7 @@ if __name__ == "__main__":
 			connstream.close() 
 
 		except:
+			logging.exception("Connection failure.")
 			print sys.exc_info()
 
 
