@@ -47,6 +47,7 @@ port 			= int(config.get('Main','Port') )
 video_end_port		= int(config.get('Main','VideoEndPort'))
 mac_oui			= config.get('Main','MAC_OUI')
 root_dir 		= config.get('Main','MainDir')
+log 			= config.get('Main','Log')
 
 # Config Database
 dbhost = config.get('Database','DBHost')
@@ -66,7 +67,10 @@ baseDN = config.get('LDAP','BaseDN')
 LdapFilter = config.get('LDAP','Filter')
 
 # LOG configuration
-logging.basicConfig(filename=root_dir+'/log/osdvt-server.log', level=logging.DEBUG)
+if log == "debug":
+	logging.basicConfig(filename=root_dir+'/log/osdvt-server.log', level=logging.DEBUG)
+else:
+	logging.basicConfig(filename=root_dir+'/log/osdvt-server.log', level=logging.INFO)
 
 
 # Finding KVM binary. RHEL6 puts in "libexec" without $PATH.
@@ -84,7 +88,6 @@ logging.debug("OSDVT %s is running. Using %s." % (version, KVM))
 
 class Vms:
 	def sigint_handler(self, signal, frame, Socket):
-
         	self._VarSaida=False
         	sys.exit()
 
@@ -95,53 +98,72 @@ class Vms:
 	def Monitor(self):
                 while self._VarSaida:
 			time.sleep(1)
-                        for i in commands.getoutput('ls '+root_dir+'/socket').split('\n'):
+                        for i in commands.getoutput('ls %s/socket' % (root_dir)).split('\n'):
         			if i:                  
-                			if os.system('ps -p $(cat '+root_dir+'/socket/'+i+') -o comm= > /dev/null 2> /dev/null') != 0:
-                        			os.system('rm -rf '+root_dir+'/socket/'+i)
+                			if os.system('ps -p $(cat %s/socket/%s) -o comm= > /dev/null 2> /dev/null' % (root_dir,i)) != 0:
+						logging.debug("Monitor: VM PID %s powered off. Removing PID file." % (i))
+                        			os.system('rm -rf %s/socket/%s' % (root_dir,i))
 
 	def AuthToken(self, dbhost, dbname, dbuser, dbpass, user, token):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select * from osdvtadmin_user where Name = '" + user + "' and Token = '"+token+"'") 
-		rs = cursor.fetchall()
+		sql = "select * from osdvtadmin_user where Name = '%s' and Token = '%s'" % (user,token) 
+		try:
+			cursor.execute(sql)
+		except:
+			cursor.close ()
+			con.close ()
+			logging.exception("AuthToken Error.")
+			return "ERR"
+
+		con.commit() 
 		cursor.close ()
 		con.close ()
-		if rs:
-			return "OK"
-		else:
-			return "ERR"
+
+		logging.debug("AuthToken: User/token OK.")
+		return "OK"
+
 
 	def AuthTokenIp(self, dbhost, dbname, dbuser, dbpass, ip, token):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select * from osdvtadmin_ip where IP = '" + ip + "' and Token = '"+token+"'") 
-		rs = cursor.fetchall()
+		sql = "select * from osdvtadmin_ip where IP = '%s' and Token = '%s'" % (ip,token)
+		try:
+			cursor.execute(sql)
+		except:
+			cursor.close ()
+			con.close ()
+			logging.exception("AuthTokenIp Error.")
+			return "ERR"
+
+		con.commit() 
 		cursor.close ()
 		con.close ()
-		if rs:
-			return "OK"
-		else:
-			return "ERR"
+
+		logging.debug("AuthTokenIp: IP/token OK.")
+		return "OK"
 
 	def SetTokenAuth(self, dbhost, dbname, dbuser, dbpass, user):
 		con = MySQLdb.connect(dbhost, dbuser, dbpass)
                 con.select_db(dbname)
                 cursor = con.cursor()
 		token = hex(random.getrandbits(64))[2:-1]
-                sql = "update osdvtadmin_user set Token = '"+str(token)+"' where Name = '" + user +"'" 
+                sql = "update osdvtadmin_user set Token = '%s' where Name = '%s'" % (token,user)
 		try:
 			cursor.execute(sql)
 		except:
 			cursor.close ()
 			con.close ()
+			logging.exception("SetTokenIp Error.")
 			return "ERR"
 
 		con.commit() 
 		cursor.close ()
 		con.close ()
+
+		logging.debug("SetTokenAuth: token OK - %s" % (token))
 		return str(token)
 
 	def SetTokenAuthIp(self, dbhost, dbname, dbuser, dbpass, ip):
@@ -149,17 +171,20 @@ class Vms:
                 con.select_db(dbname)
                 cursor = con.cursor()
 		token = hex(random.getrandbits(64))[2:-1]
-                sql = "update osdvtadmin_ip set Token = '"+str(token)+"' where IP = '" + ip +"'" 
+                sql = "update osdvtadmin_ip set Token = '%s' where IP = '%s'" % (token,ip) 
 		try:
 			cursor.execute(sql)
 		except:
 			cursor.close ()
 			con.close ()
+			logging.exception("SetTokenAuthIp Error.")
 			return "ERR"
 
 		con.commit() 
 		cursor.close ()
 		con.close ()
+
+		logging.debug("SetTokenAuthIp: IP token OK - %s" % (token))
 		return str(token)
 
 	def Auth(self, ldaphost, user, password, baseDN):
@@ -174,16 +199,16 @@ class Vms:
 				logging.debug("Authenticating user. USER: %s" % user)
 				logging.debug("Authenticating user. baseDN: %s" % baseDN)
 			except:
-				logging.exception("LDAP Error: %s" % ldaphost)
+				logging.exception("Auth: LDAP Error - %s" % ldaphost)
 				return "ERR: Invalid credentials"
 	
 			try:
 				l.simple_bind_s(dn,password)
 			except ldap.INVALID_CREDENTIALS:
-				logging.exception("LDAP Error: %s invalid credentials" % user)
+				logging.exception("Auth: LDAP Error - %s invalid credentials" % user)
 				return "ERR: Invalid credentials"
 		
-		logging.debug("User %s authenticated." % user)
+		logging.debug("Auth: User %s authenticated." % user)
 		return "OK: Auth successful"
 
 	def Kill(self, dbhost, dbname, dbuser, dbpass, vmname):
@@ -191,16 +216,19 @@ class Vms:
 			con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 			con.select_db(dbname)
 			cursor = con.cursor() 
-			cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '" + vmname + "'")
+			cursor.execute("SELECT osdvtadmin_vm.Name FROM osdvtadmin_vm WHERE Name = '%s'" % (vmname))
 			rs = cursor.fetchall()
 			cursor.close ()
 			con.close ()
 			if rs:
-				pidfile = root_dir + "/socket/" + rs[0][0] + ".pid"
-				cmnd = "kill $(cat "+pidfile+")"
+				pidfile = "%s/socket/%s.pid" % (root_dir,rs[0][0])
+				cmnd = "kill $(cat %s)" % (pidfile)
+
 				if os.system(cmnd) == 0:
+					logging.debug("Kill: VM %s killed." % (vmname))
 	                        	return "OK: Killed"
 	                       	else:  
+					logging.debug("Kill: Error killing VM %s." % (vmname))
 	                        	return "ERR: Can not kill VM"
 
 	def Status(self, dbhost, dbname, dbuser, dbpass, vmname):
@@ -237,7 +265,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '" + vmname +"'")
+		cursor.execute("select osdvtadmin_vm.Video,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '" + vmname +"'")
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
@@ -278,7 +306,7 @@ class Vms:
 	
 	def Start(self, dbhost, dbname, dbuser, dbpass, vmname, video_end_port, mac_oui):
 		def AddQemuArgs(key, value):
-			qemuargs.append("-"+key)
+			qemuargs.append("-%s" % (key))
 			if value:	
 				qemuargs.append(value)
 
@@ -398,7 +426,7 @@ class Vms:
 				AddQemuArgs("pidfile"	, "%s/socket/%s.pid" % (root_dir,StartName))
 
 				# Seeting system architecture.
-				if StartBits == 1:
+				if StartBits == "64":
 					AddQemuArgs("cpu"	, "qemu64")
 				else:
 					AddQemuArgs("cpu"       , "qemu32")
@@ -453,14 +481,14 @@ class Vms:
 					logging.debug("Random VideoToken: %s" % video_token)
 				
 				# Setting video mode (SPICE/VNC)
-				if StartVideo == 0:
+				if StartVideo == "0":
 					AddQemuArgs("vga", "qxl")
 					AddQemuArgs("spice", "port=%(video_port)s,password=%(video_token)s" % {'video_port': video_port, 'video_token': video_token})
 					AddQemuArgs("device", "virtio-serial")
 					AddQemuArgs("chardev", "spicevmc,id=vdagent,name=vdagent")
 					AddQemuArgs("device", "virtserialport,chardev=vdagent,name=com.redhat.spice.0")
 
-				if StartVideo == 1:
+				if StartVideo == "1":
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
 
@@ -474,12 +502,13 @@ class Vms:
 					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev3")
 					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3")
 
-				# Putting all together justo for log.
+				# Putting all together just for log.
 				cmndargs = " ".join(qemuargs)
 				logging.debug("QEMU COMMAND: %s %s" % (KVM, cmndargs))
+				
 
 				# Running qemu command.
-				if subprocess.call([KVM] + qemuargs) == 0:
+				if subprocess.Popen([KVM] + qemuargs) == 0:
 					return "OK: Started"
 				else:
 					return "ERR: Can not start VM"
@@ -667,7 +696,7 @@ if __name__ == "__main__":
 	                                        if result != "ERR":
 							result = minhas_vms.Connect(dbhost, dbname, dbuser, dbpass, vmname)
 	                                                if result:
-	                                                        connstream.write(result[0][0]+" "+result[0][1])
+	                                                        connstream.write(result[0][0]+" "+result[0][1]+" "+result[0][2])
 	                                                else:
 	                                                        Socket.sendto ( 'ERR: Can not connect' )
 						else:
@@ -679,7 +708,7 @@ if __name__ == "__main__":
 						if result != "ERR":  
 							result = minhas_vms.Connect(dbhost, dbname, dbuser, dbpass, vmname)
 							if result:
-				                		connstream.write(result[0][0]+" "+result[0][1])
+	                                                        connstream.write(result[0][0]+" "+result[0][1]+" "+result[0][2])
 				        		else:
 				                		Socket.sendto ( 'ERR: Can not connect' )
 						else:

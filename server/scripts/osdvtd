@@ -11,7 +11,7 @@ port="6970"
 start()
 {
 	! ps -C $osdvt > /dev/null 2> /dev/null && {
-	$base_dir/$osdvt > /dev/null 2> /dev/null &
+	$base_dir/$osdvt >> /usr/local/osdvt/server/log/osdvt-server.log 2>> /usr/local/osdvt/server/log/osdvt-server.log &
         echo -n Starting OSDVT..
 	n=120
         while ! ps -C $osdvt > /dev/null 2> /dev/null && [ $n -gt 1 ]; do
@@ -63,7 +63,7 @@ stop_daemon()
         ! ps -C $osdvt > /dev/null 2> /dev/null && echo -n " OK" ||  echo -n " FAILED"
         echo ""
 	} || {
-	echo "OSDVT was not running."
+	echo "OSDVT is not running."
 	}
 }
 

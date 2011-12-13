@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib import admin
 
-VIDEO_CHOICES	= ((0, 'SPICE'), (1, 'VNC'))
+VIDEO_CHOICES	= (('0', 'SPICE'), ('1', 'VNC'))
 OS_CHOICES	= (('Linux', 'Linux'), ('Windows', 'Windows'))
-BITS_CHOICES	= ((0, '32'), (1, '64'))
+BITS_CHOICES	= (('32', '32'), ('64', '64'))
 
 class User(models.Model):
         Name = models.CharField(max_length=200)
@@ -49,11 +49,11 @@ class Vm(models.Model):
 	UsbRedirect = models.BooleanField(default=0)
         MAC = models.CharField(max_length=17, unique=True, blank=True, null=True)
         Bridge = models.ForeignKey(Bridge, default=1, null=False)
-	Video = models.BooleanField(choices=VIDEO_CHOICES,default=0)
+	Video = models.CharField(max_length=2,choices=VIDEO_CHOICES)
         Users = models.ManyToManyField(User, blank=True, null=True)
         Ips = models.ManyToManyField(Ip, blank=True, null=True)
 	OsVariant = models.ForeignKey(OsVariant, blank=True, null=True)
-	Bits = models.BooleanField(choices=BITS_CHOICES,default=0)
+	Bits = models.CharField(max_length=2,choices=BITS_CHOICES)
         VideoPort = models.CharField(max_length=5, blank=True, null=True, editable=False)
         VideoToken = models.CharField(max_length=20, blank=True, null=True, editable=False)
 
@@ -79,8 +79,8 @@ class VmDiskInline(admin.TabularInline):
 	extra = 0
 
 class VmAdmin(admin.ModelAdmin):
-       	list_display	= ('Name', 'Description', 'OsVariant', 'Core', 'Socket', 'Memory', 'MAC')
-        list_filter	= ['Core', 'Socket', 'Memory', 'OsVariant', 'Users', 'Ips']
+       	list_display	= ('Name', 'Description', 'OsVariant', 'Core', 'Socket', 'Memory', 'Video','MAC')
+        list_filter	= ['Core', 'Socket', 'Memory', 'OsVariant', 'Video', 'Users', 'Ips']
         ordering	= ['Name', 'Description']
         search_fields	= ['Name', 'Description', 'MAC', 'Memory', 'Users__Name', 'Users__Description', 'OsVariant__OsType', 'OsVariant__OsVariant']
     	inlines		= [ VmDiskInline, ]
