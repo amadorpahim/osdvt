@@ -32,8 +32,9 @@ stop()
 {
 	declare -l option
 	ps -C qemu-kvm > /dev/null 2>1 && {
-		read -p "There is at least one VM running. Kill all VMs? (y/n)" option	
-		[ ${option} == "y" ] && {
+		read -t 5 -p "There is at least one VM running. Kill all VMs? (y/n)" option	
+		echo ""
+		[ "${option}" == "y" ] && {
 			killall qemu-kvm
 			n=120
 			while ps -C qemu-kvm > /dev/null 2>1 && [ $n -gt 1 ]; do
