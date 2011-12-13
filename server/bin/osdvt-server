@@ -267,7 +267,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select osdvtadmin_vm.Video,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '%s'" % (vmname))
+		cursor.execute("select osdvtadmin_vm.StartedVideo,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
@@ -492,6 +492,21 @@ class Vms:
 				if StartVideo == "1":
 					AddQemuArgs("vga", "cirrus")
 					AddQemuArgs("vnc", ":%(video_port)s" % {'video_port': video_port%5900})
+
+				# Registering started video mode. 
+				con = MySQLdb.connect(dbhost, dbuser, dbpass)
+				con.select_db(dbname)
+				cursor = con.cursor()
+				sql = "update osdvtadmin_vm set StartedVideo = '%s' where Name = '%s'" % (StartVideo,vmname) 
+				try:
+					cursor.execute(sql)
+				except:
+					logging.exception("Error inserting StartedVideo in database.")
+					cursor.close ()
+					con.close ()
+
+				con.commit() 
+				cursor.close ()
 
 				# Setting usb_redir parameters.
 				if StartUsbRedirect == 1:
