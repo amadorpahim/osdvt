@@ -267,7 +267,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("select osdvtadmin_vm.StartedVideo,osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken from osdvtadmin_vm where osdvtadmin_vm.Name = '%s'" % (vmname))
+		cursor.execute("select osdvtadmin_vm.VideoPort,osdvtadmin_vm.VideoToken,osdvtadmin_vm.StartedVideo from osdvtadmin_vm where osdvtadmin_vm.Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
