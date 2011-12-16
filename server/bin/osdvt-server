@@ -272,7 +272,7 @@ class Vms:
 		cursor.close ()
 		con.close ()
 
-		logging.debug("Connect: Video %s, VideoPort %s, VideoToken %s." % (rs[0][0],rs[0][1],rs[0][2]))
+		logging.debug("Connect: VideoPort %s, VideoToken %s, VideoType %s." % (rs[0][0],rs[0][1],rs[0][2]))
 		return rs
 
 	def Search(self, dbhost, dbname, dbuser, dbpass, user):
