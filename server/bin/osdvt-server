@@ -524,7 +524,7 @@ class Vms:
 				
 
 				# Running qemu command.
-				if subprocess.Popen([KVM] + qemuargs) == 0:
+				if subprocess.call([KVM] + qemuargs) == 0:
 					return "OK: Started"
 				else:
 					return "ERR: Can not start VM"
