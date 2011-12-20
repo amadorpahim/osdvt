@@ -17,6 +17,7 @@
 # long with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+import re
 import MySQLdb
 import sys
 import os
@@ -49,6 +50,25 @@ mac_oui			= config.get('Main','MAC_OUI')
 root_dir 		= config.get('Main','MainDir')
 log 			= config.get('Main','Log')
 
+if port < 1024 or port > 65535:
+	print "OSDVT Config error: Invalid Port. Valid values are from 1024 to 65535."
+	sys.exit(1)
+	
+if video_end_port < 5901 or video_end_port > 65535:
+	print "OSDVT Config error: Invalid VideoEndPort. Valid values are from 5901 to 65535."
+	sys.exit(1)
+	
+if not re.match("[0-9a-f]{2}([:][0-9a-f]{2}){2}$", mac_oui.lower()):
+	print "OSDVT Config error: Invalid MAC_OUI. Valid values are from 00:00:00 to FF:FF:FF."
+	sys.exit(1)
+
+# Check root_dir, finding all required files.
+
+if log != "debug" and log != "info":
+        print "OSDVT Config error: Invalid Log. Valid values are debug or info."
+        sys.exit(1)
+	
+
 # Config Database
 dbhost = config.get('Database','DBHost')
 dbname = config.get('Database','DBName')
@@ -60,12 +80,23 @@ certfile = config.get('SSL','CertFile')
 keyfile = config.get('SSL','KeyFile')
 sslversion = config.get('SSL','Version')
 
+# Check if certfile and keyfile are there.
+
+if sslversion != "SSLv1" and sslversion != "SSLv2" and sslversion != "SSLv23" and sslversion != "TLSv1":
+        print "OSDVT Config error: Invalid SSL Version. Valid values are SSLv1, SSLv2, SSLv23 or TLSv1."
+        sys.exit(1)
+	
+
 # Config LDAP
 LDAPEnabled = config.get('LDAP','Enabled')
 ldaphost = "ldap://"+config.get('LDAP','Host')
 baseDN = config.get('LDAP','BaseDN')
 LdapFilter = config.get('LDAP','Filter')
 
+if LDAPEnabled != "True" and LDAPEnabled != "False":
+        print "OSDVT Config error: Invalid LDAPEnabled. Valid values are True or False."
+        sys.exit(1)
+	
 # LOG configuration
 if log == "debug":
 	logging.basicConfig(filename=root_dir+'/log/osdvt-server.log', level=logging.DEBUG)
