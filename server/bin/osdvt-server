@@ -62,7 +62,25 @@ if not re.match("[0-9a-f]{2}([:][0-9a-f]{2}){2}$", mac_oui.lower()):
 	print "OSDVT Config error: Invalid MAC_OUI. Valid values are from 00:00:00 to FF:FF:FF."
 	sys.exit(1)
 
-# Check root_dir, finding all required files.
+if not os.path.isdir(root_dir):
+	print "OSDVT Config error: Invalid MainDir. Please inform right OSDVT path."
+	sys.exit(1)
+
+if not os.path.isfile(root_dir+"/config/ich9-ehci-uhci.cfg"):
+	print "OSDVT Config error: ich9-ehci-uhci.cfg config file not found."
+	sys.exit(1)
+
+if not os.path.isfile(root_dir+"/log/osdvt-server.log"):
+	print "OSDVT Config error: osdvt-server.log file not found. Please create it ("+root_dir+"/log/osdvt-server.log)."
+        sys.exit(1)
+
+if not os.path.isfile(root_dir+"/scripts/qemu-ifup.sh"):
+	print "OSDVT Config error: qemu-ifup.sh script not found."
+	sys.exit(1)
+
+if not os.path.isdir(root_dir+"/socket"):
+	print "OSDVT Config error: socket dir not found. Please create it ("+root_dir+"/socket/)."
+	sys.exit(1)
 
 if log != "debug" and log != "info":
         print "OSDVT Config error: Invalid Log. Valid values are debug or info."
@@ -80,7 +98,13 @@ certfile = config.get('SSL','CertFile')
 keyfile = config.get('SSL','KeyFile')
 sslversion = config.get('SSL','Version')
 
-# Check if certfile and keyfile are there.
+if not os.path.isfile(certfile):
+	print "OSDVT Config error: CertFile not found."
+	sys.exit(1)
+
+if not os.path.isfile(keyfile):
+	print "OSDVT Config error: Key not found."
+	sys.exit(1)
 
 if sslversion != "SSLv1" and sslversion != "SSLv2" and sslversion != "SSLv23" and sslversion != "TLSv1":
         print "OSDVT Config error: Invalid SSL Version. Valid values are SSLv1, SSLv2, SSLv23 or TLSv1."
