@@ -235,7 +235,7 @@ class Vms:
 		con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 		con.select_db(dbname)
 		cursor = con.cursor() 
-		cursor.execute("SELECT osdvtadmin_vm.Name,osdvtadmin_vm.Core,osdvtadmin_vm.Socket,osdvtadmin_vm.Memory,osdvtadmin_vm.Video,osdvtadmin_vm.Bits,osdvtadmin_osvariant.OsType FROM osdvtadmin_vm,osdvtadmin_osvariant WHERE osdvtadmin_vm.OsVariant_id = osdvtadmin_osvariant.id and  Name = '%s'" % (vmname))
+		cursor.execute("SELECT osdvtadmin_vm.Name,osdvtadmin_vm.Core,osdvtadmin_vm.Socket,osdvtadmin_vm.Memory,osdvtadmin_vm.Video,osdvtadmin_vm.Bits,osdvtadmin_osvariant.OsType,osdvtadmin_vm.StartedVideo FROM osdvtadmin_vm,osdvtadmin_osvariant WHERE osdvtadmin_vm.OsVariant_id = osdvtadmin_osvariant.id and  Name = '%s'" % (vmname))
 		rs = cursor.fetchall()
 		cursor.close ()
 		con.close ()
@@ -243,17 +243,24 @@ class Vms:
 			pidfile = "%s/socket/%s.pid" % (root_dir,rs[0][0])
 			Smp = int(rs[0][1])*int(rs[0][2])
 			Mem = rs[0][3]
-			if rs[0][4] == '0':
-				Video = 'SPICE'
-			elif rs[0][4] == '1':
-				Video = 'VNC'
-
 			Bits = rs[0][5]
 			Os = rs[0][6]
 
 			if os.path.isfile(pidfile):
+
+				if rs[0][7] == '0':
+					Video = 'SPICE'
+				elif rs[0][7] == '1':
+					Video = 'VNC'
+
 				return "True",Smp,Mem,Video,Bits,Os 
 			else:
+
+				if rs[0][4] == '0':
+					Video = 'SPICE'
+				elif rs[0][4] == '1':
+					Video = 'VNC'
+
 				return "False",Smp,Mem,Video,Bits,Os
 
 	def StatusIp(self, dbhost, dbname, dbuser, dbpass, vmname):
