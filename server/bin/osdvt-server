@@ -491,7 +491,6 @@ class Vms:
 				AddQemuArgs("device"	, "virtio-balloon-pci,id=balloon0,bus=pci.0")
 				AddQemuArgs("name"	, StartName)
 				AddQemuArgs("m"		, StartMemory)
-				AddQemuArgs("soundhw"	, "ac97")
 				AddQemuArgs("monitor"	, "null")
 				AddQemuArgs("localtime"	, "")
 				AddQemuArgs("daemonize"	, "")
@@ -554,6 +553,7 @@ class Vms:
 				
 				# Setting video mode (SPICE/VNC)
 				if StartVideo == "0":
+					AddQemuArgs("soundhw"	, "ac97")
 					AddQemuArgs("vga", "qxl")
 					AddQemuArgs("spice", "port=%(video_port)s,password=%(video_token)s" % {'video_port': video_port, 'video_token': video_token})
 					AddQemuArgs("device", "virtio-serial")
