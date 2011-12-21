@@ -467,7 +467,7 @@ class Vms:
 			con = MySQLdb.connect(dbhost, dbuser, dbpass) 
 			con.select_db(dbname)
 			cursor = con.cursor() 
-			cursor.execute("select * from osdvtadmin_vm where Name = '%s'" % (vmname)) 
+			cursor.execute("select osdvtadmin_vm.*,osdvtadmin_osvariant.OsType from osdvtadmin_vm,osdvtadmin_osvariant where osdvtadmin_vm.OsVariant_id = osdvtadmin_osvariant.Id and osdvtadmin_vm.Name = '%s'" % (vmname)) 
 			rs = cursor.fetchall()
 
 			if rs:
@@ -484,6 +484,7 @@ class Vms:
 				StartVideo 		= rs[0][10] 
 				StartOsVariant 		= rs[0][11] 
 				StartBits 		= rs[0][12] 
+				StartOs 		= rs[0][13] 
 
 				qemuargs		= []
 
@@ -510,7 +511,7 @@ class Vms:
 				mac = GetMac(vmname, mac_oui)
 
 				# Setting virtio/vhost net device to Linux hosts.
-				if StartOsVariant == 1:
+				if StartOs == "Linux":
 					AddQemuArgs("netdev"	, "tap,ifname=tap%s,id=guest0,vhost=on,script=%s/scripts/qemu-ifup.sh,downscript=%s/scripts/qemu-ifdown.sh" % (StartId,root_dir,root_dir))
 					AddQemuArgs("net"	, "nic,model=virtio,netdev=guest0,macaddr=%s" % (mac))
 				
