@@ -57,6 +57,8 @@ class Vm(models.Model):
         VideoPort = models.CharField(max_length=5, blank=True, null=True, editable=False)
         VideoToken = models.CharField(max_length=20, blank=True, null=True, editable=False)
         StartedVideo = models.CharField(max_length=1, blank=True, null=True, editable=False)
+        def __unicode__(self):
+                return u'%s' % (self.Name)
 
 class VmDisk(models.Model):
 	Disk = models.ForeignKey(Disk)
