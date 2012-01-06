@@ -4,6 +4,7 @@ from django.contrib import admin
 VIDEO_CHOICES	= (('0', 'SPICE'), ('1', 'VNC'))
 OS_CHOICES	= (('Linux', 'Linux'), ('Windows', 'Windows'))
 BITS_CHOICES	= (('32', '32'), ('64', '64'))
+USB_CHOICES	= (('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'))
 
 class User(models.Model):
         Name = models.CharField(max_length=200)
@@ -46,7 +47,7 @@ class Vm(models.Model):
         Memory = models.CharField(max_length=4)
 	Disk = models.ManyToManyField(Disk, through='VmDisk')
         Immutable = models.BooleanField(default=0)
-	UsbRedirect = models.BooleanField(default=0)
+	UsbRedirect = models.CharField(max_length=1,choices=USB_CHOICES,default=0)
         MAC = models.CharField(max_length=17, unique=True, blank=True, null=True)
         Bridge = models.ForeignKey(Bridge, default=1, null=False)
 	Video = models.CharField(max_length=2,choices=VIDEO_CHOICES)

@@ -581,14 +581,11 @@ class Vms:
 				cursor.close ()
 
 				# Setting usb_redir parameters.
-				if StartUsbRedirect == 1:
+				if StartUsbRedirect > 0:
 					AddQemuArgs("readconfig", "%(root_dir)s/config/ich9-ehci-uhci.cfg" % {'root_dir': root_dir})
-					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev1")
-					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev1,id=usbredirdev1,debug=3")
-					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev2")
-					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3")
-					AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev3")
-					AddQemuArgs("device", "usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3")
+					for i in range(StartUsbRedirect):
+						AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev%s" % (i))
+						AddQemuArgs("device", "usb-redir,chardev=usbredirchardev%s,id=usbredirdev%s,debug=3" % (i,i))
 
 				# Putting all together just for log.
 				cmndargs = " ".join(qemuargs)
