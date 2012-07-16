@@ -583,7 +583,7 @@ class Vms:
 				# Setting usb_redir parameters.
 				if StartUsbRedirect > 0:
 					AddQemuArgs("readconfig", "%(root_dir)s/config/ich9-ehci-uhci.cfg" % {'root_dir': root_dir})
-					for i in range(StartUsbRedirect):
+					for i in range(int(StartUsbRedirect)):
 						AddQemuArgs("chardev", "spicevmc,name=usbredir,id=usbredirchardev%s" % (i))
 						AddQemuArgs("device", "usb-redir,chardev=usbredirchardev%s,id=usbredirdev%s,debug=3" % (i,i))
 
