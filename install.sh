@@ -1,4 +1,9 @@
 #!/bin/bash
+# OSDVT Install Script
+# Be careful: This script may not check the system before making changes.
+#             It's just the automation of Full Install Guide 
+# Supported Systems:
+# - Red Hat Enterprise Linux 6.3
 
 install_packets()
 {
@@ -22,9 +27,9 @@ os_probe()
             echo Red Hat 6.3
             return 1
         }
-    elif [[ $osVersion =~ "Fedora" ]]
-    then
-        echo Fedora
+    else
+        echo "System not supported. Please install manually."
+	exit 1
     fi
 }
 
