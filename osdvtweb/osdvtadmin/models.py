@@ -77,20 +77,9 @@ class VideoPorts(models.Model):
         def __unicode__(self):
                 return u'%s (%s)' % (self.Name, self.Description)
 
-class QemuParms(models.Model):
-        Parm = models.CharField(max_length=100)
-        Value = models.CharField(max_length=500)
-	Vm = models.ForeignKey(Vm, blank=True, null=True)
-        def __unicode__(self):
-                return u'%s (%s)' % (self.Parm, self.Value)
-
 #ADMIN STUFF
 class VmDiskInline(admin.TabularInline):
 	model = VmDisk
-	extra = 0
-
-class QemuParmsInline(admin.TabularInline):
-	model = QemuParms
 	extra = 0
 
 class VmAdmin(admin.ModelAdmin):
@@ -98,7 +87,7 @@ class VmAdmin(admin.ModelAdmin):
         list_filter	= ['Core', 'Socket', 'Memory', 'OsVariant', 'Video', 'Users', 'Ips']
         ordering	= ['Name', 'Description']
         search_fields	= ['Name', 'Description', 'MAC', 'Memory', 'Users__Name', 'Users__Description', 'OsVariant__OsType', 'OsVariant__OsVariant']
-    	inlines		= [ VmDiskInline, QemuParmsInline, ]
+    	inlines		= [ VmDiskInline, ]
 
 admin.site.register(User)
 admin.site.register(Ip)
