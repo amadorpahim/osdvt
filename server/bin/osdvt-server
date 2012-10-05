@@ -134,7 +134,7 @@ if os.path.exists('/usr/bin/qemu-kvm'):
 elif os.path.exists('/usr/libexec/qemu-kvm'):
 	KVM="/usr/libexec/qemu-kvm"
 else:
-	logging.info("OSDVT: qemu-kvm not found. Maybe, you've to install it.")
+	logging.info("OSDVT: qemu-kvm not found. Is it installed?")
 	signal.signal(signal.SIGTERM, minhas_vms.sigterm_handler, Socket)
 	signal.signal(signal.SIGINT, minhas_vms.sigint_handler, Socket)
 

@@ -12,7 +12,7 @@ DATABASES = {
         'ENGINE':	'django.db.backends.mysql',
         'NAME':		'db_osdvt',
         'USER':		'root',
-        'PASSWORD':	'',
+        'PASSWORD':	'osdvt',
         'HOST':		'localhost',
         'PORT':		'',
     }
@@ -28,11 +28,8 @@ USE_I18 = True
 
 USE_L10N = True
 
-MEDIA_ROOT = ''
-MEDIA_URL = ''
-ADMIN_MEDIA_PREFIX = '/media/'
-#STATIC_ROOT = '/usr/lib/python2.6/site-packages/django/contrib/admin/media/'
-#STATIC_URL = '/media/'
+STATIC_ROOT = '/usr/lib/python2.7/site-packages/django/contrib/admin/static/'
+STATIC_URL = '/static/'
 
 SECRET_KEY = '%%cfi(=(r+@ge0xa1ywh-*as2_^5$s!4vgt08-0rwe*%s=3kqc'
 
