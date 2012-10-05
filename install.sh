@@ -115,9 +115,9 @@ main()
     config_mysql $distro    
     config_django $distro
     config_init $distro
+    config_network $distro    
     start_osdvtd $distro
     config_httpd $distro
-    config_network $distro    
     
 }
 
