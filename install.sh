@@ -9,7 +9,7 @@ install_packets()
 {
     echo "OSDVT SERVER - Installing Packets"
     [ $1 -eq 1 ] && {
-        rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+        rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
         yum -y install qemu-kvm qemu-img spice-server \
             mysql-server MySQL-python python-ldap \
             bridge-utils tunctl Django httpd \
@@ -106,6 +106,17 @@ start_osdvtd()
     }
 }
 
+config_iptables()
+{
+    [ $1 -eq 1 ] && {
+	iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+	iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+	iptables -I INPUT -p tcp --dport 6970 -j ACCEPT
+	iptables -I INPUT -p tcp --dport 5900:5999 -j ACCEPT
+	service iptables save
+    }
+}
+
 main()
 {
     os_probe
@@ -117,6 +128,7 @@ main()
     config_init $distro
     config_network $distro    
     start_osdvtd $distro
+    config_iptables $distro
     config_httpd $distro
     
 }
