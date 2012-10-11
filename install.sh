@@ -175,6 +175,7 @@ config_osdvt()
     	read -p "Video port range starts in port 5900. Please enter the final port: [5999] " videoEndPort
 	videoEndPort=${videoEndPort:-5999}
 	sed -i "s/^VideoEndPort.*=.*/VideoEndPort = $videoEndPort/" /usr/local/osdvt/server/config/osdvt.conf
+	sed -i "s/^DBPassword.*=.*/DBPassword = ${mysqlpwd}/" /usr/local/osdvt/server/config/osdvt.conf
 
         service osdvtd restart
     }
@@ -186,6 +187,7 @@ config_osdvt()
     	read -p "Video port range starts in port 5900. Please enter the final port: [5999] " videoEndPort
 	videoEndPort=${videoEndPort:-5999}
 	sed -i "s/^VideoEndPort.*=.*/VideoEndPort = $videoEndPort/" /usr/local/osdvt/server/config/osdvt.conf
+	sed -i "s/^DBPassword.*=.*/DBPassword = ${mysqlpwd}/" /usr/local/osdvt/server/config/osdvt.conf
 
         service osdvtd restart
     }
